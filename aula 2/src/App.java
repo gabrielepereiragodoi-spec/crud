@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 public class App {
     static List<Aluno> alunos = new ArrayList<>();
+
     public static void main(String[] args) throws Exception {
         Scanner sc = new Scanner(System.in);
         Integer opcao = 0;
@@ -26,13 +27,20 @@ public class App {
                     Integer id = sc.nextInt();
                     deletar(id);
                     break;
+
+                    case 4:
+                        mostrar();
+                        System.out.println("Digite o id a ser editado");
+                        Integer id2 = sc.nextInt();
+                        editar(id2)
+                        break;
             }
         }
     }
 
-    public static void cadastrar(){
+    public static void cadastrar() {
         Scanner sc = new Scanner(System.in);
-        Aluno aluno = new Aluno();  
+        Aluno aluno = new Aluno();
         System.out.println("Digite o nome do aluno: ");
         aluno.setNome(sc.nextLine());
         System.out.println("Digite o curso do aluno: ");
@@ -44,20 +52,32 @@ public class App {
         alunos.add(aluno);
     }
 
-    public static void mostrar(){
-        for(int i = 0; i < alunos.size(); i++){
+    public static void mostrar() {
+        for (int i = 0; i < alunos.size(); i++) {
             Aluno aluno = alunos.get(i);
-            System.out.println("Id: "+i);
-            System.out.println("Nome: "+aluno.getNome());
-            System.out.println("Turma: "+aluno.getTurma());
-            System.out.println("Idade: "+aluno.getIdade());
-            System.out.println("Curso: "+aluno.getCurso());
+            System.out.println("Id: " + i);
+            System.out.println("Nome: " + aluno.getNome());
+            System.out.println("Turma: " + aluno.getTurma());
+            System.out.println("Idade: " + aluno.getIdade());
+            System.out.println("Curso: " + aluno.getCurso());
             System.out.println("----------------------------------");
         }
     }
 
-    public static void deletar(Integer id){
+    public static void deletar(Integer id) {
         Aluno aluno = alunos.get(id);
         alunos.remove(aluno);
+    }
+
+    public static void editar(Integer id) {
+        Scanner sc = new Scanner(System.in);
+        Scanner sc2 = new Scanner(System.in);
+        Aluno aluno = alunos.get(id);
+        System.out.println("O nome atual é: " + aluno.getNome() + " digite 1 para editar:");
+        Integer opcao = sc.nextInt();
+        if (opcao == 1)
+            ;
+        System.out.println("digite o novo nome");
+
     }
 }
