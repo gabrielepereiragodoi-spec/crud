@@ -75,8 +75,7 @@ public class App {
         Aluno aluno = alunos.get(id);
         System.out.println("O nome atual é: " + aluno.getNome() + " digite 1 para editar:");
         Integer opcao = sc.nextInt();
-        if (opcao == 1)
-            ;
+        if (opcao == 1);
         System.out.println("digite o novo nome");
 
     }
