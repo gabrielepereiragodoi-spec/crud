@@ -9,9 +9,10 @@ public class App {
     public static void main(String[] args) throws Exception {
         Scanner sc = new Scanner(System.in);
         Integer opcao = 0;
-        while(opcao != 6){
-            
-            System.out.println("Este é um CRUD de alunos! Digite 1 para cadastrar\nDigite 2 para mostrar"); 
+        while (opcao != 6) {
+
+            System.out.println(
+                    "Este é um CRUD de alunos! Digite 1 para cadastrar\nDigite 2 para mostrar \ndigite 3 para deletar \ndigite 4 para editar \ndigite 5 para filtrar por nome");
             opcao = sc.nextInt();
             switch (opcao) {
                 case 1:
@@ -28,12 +29,13 @@ public class App {
                     deletar(id);
                     break;
 
-                    case 4:
-                        mostrar();
-                        System.out.println("Digite o id a ser editado");
-                        Integer id2 = sc.nextInt();
-                        editar(id2)
-                        break;
+                case 4:
+                    mostrar();
+                    System.out.println("Digite o id a ser editado");
+                    Integer id2 = sc.nextInt();
+                    break;
+                case 5:
+                    filtrarPorNome();
             }
         }
     }
@@ -75,8 +77,24 @@ public class App {
         Aluno aluno = alunos.get(id);
         System.out.println("O nome atual é: " + aluno.getNome() + " digite 1 para editar:");
         Integer opcao = sc.nextInt();
-        if (opcao == 1);
+        if (opcao == 1)
+            ;
         System.out.println("digite o novo nome");
 
+    }
+
+    public static void filtrarPorNome() {
+        Scanner sc = new Scanner(System.in);
+        String nome;
+        System.out.println("Digite o nome para ser filtrado: ");
+        nome = sc.nextLine();
+        List<Aluno> filtrados = new ArrayList<>();
+        for (Aluno individuo : alunos) {
+            if (individuo.getNome().contains(nome)) {
+                System.out.println("Nome: " + individuo.getNome());
+                System.out.println("Turma: " + individuo.getTurma());
+                System.out.println("-------------------------------");
+            }
+        }
     }
 }
